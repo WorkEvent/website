@@ -1,11 +1,11 @@
 import type { Ref } from 'vue';
 import type { Profile } from './../types/profile';
 
-export const useUserProfile = (): Ref<Profile> => {
+export const useUserProfile = async () => {
   const supabase = useSupabaseClient();
   const user = useSupabaseUser();
 
-  const { data: profile }: { data: Ref<Profile> } = useAsyncData('profile', async () => {
+  const { data: profile }: { data: Ref<Profile> } = await useAsyncData('profile', async () => {
     const { data } = await supabase
       .from('profiles')
       .select('*')
