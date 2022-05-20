@@ -5,8 +5,14 @@ definePageMeta({
 });
 const supabase = useSupabaseClient();
 
+const profile = await useUserProfile();
+
+console.log(profile.value);
+
 const { data: events, error } = await supabase
-  .from('events');
+  .from('events')
+  .select('*')
+  .eq('company', profile.value.company);
 
 </script>
 
@@ -22,7 +28,7 @@ const { data: events, error } = await supabase
 
           <div class="card-actions justify-end">
             <NuxtLink class="btn btn-primary" :to="`/events/${event.id}`">
-              Voir Plus
+              Read More
             </NuxtLink>
           </div>
         </div>

@@ -5,7 +5,7 @@ definePageMeta({
 
 const user = useSupabaseUser();
 const { signOut } = useAuth();
-const profile = useUserProfile();
+const profile = await useUserProfile();
 
 const logout = async () => {
   await signOut('login');
