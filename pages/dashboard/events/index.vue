@@ -7,8 +7,6 @@ const supabase = useSupabaseClient();
 
 const profile = await useUserProfile();
 
-console.log(profile.value);
-
 const { data: events, error } = await supabase
   .from('events')
   .select('*')
@@ -17,9 +15,9 @@ const { data: events, error } = await supabase
 </script>
 
 <template>
-  <NuxtLayout>
+  <NuxtLayout name="dashboard">
     <div v-if="!error" class="flex-col flex gap-5">
-      <div v-for="event in events" :key="event.id" class="card w-96 bg-base-100 shadow-xl">
+      <div v-for="event in events" :key="event.id" class="card w-full bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title">
             {{ event.name }}
@@ -27,7 +25,7 @@ const { data: events, error } = await supabase
           <p>{{ event.description }}</p>
 
           <div class="card-actions justify-end">
-            <NuxtLink class="btn btn-primary" :to="`/events/${event.id}`">
+            <NuxtLink class="btn btn-primary" :to="`/dashboard/events/${event.id}`">
               Read More
             </NuxtLink>
           </div>

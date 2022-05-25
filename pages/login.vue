@@ -11,11 +11,11 @@ const email = ref('');
 const password = ref('');
 
 const login = () => {
-  signIn(email.value, password.value, '/');
+  signIn(email.value, password.value, 'dashboard');
 };
 
 const register = () => {
-  signUp(email.value, password.value, '/');
+  signUp(email.value, password.value, 'dashboard');
 };
 </script>
 
