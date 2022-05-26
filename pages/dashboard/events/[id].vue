@@ -22,7 +22,7 @@ const event = data[0] as Event;
 </script>
 
 <template>
-  <NuxtLayout>
+  <NuxtLayout name="dashboard">
     <div v-if="!error" class="flex-col flex gap-5">
       <div class="card w-96 bg-base-100 shadow-xl">
         <div class="card-body">
