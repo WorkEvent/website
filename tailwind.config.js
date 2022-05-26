@@ -6,7 +6,10 @@ module.exports = {
     './plugins/**/*.{js,ts}'
     // "./nuxt.config.{js,ts}",
   ],
-  plugins: [require('daisyui')],
+  plugins: [
+    require('daisyui'),
+    require('@tailwindcss/line-clamp')
+  ],
   theme: {
     extend: {}
   },

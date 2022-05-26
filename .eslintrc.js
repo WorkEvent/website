@@ -6,8 +6,8 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:vue/essential',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended'
     '@nuxtjs/eslint-config-typescript'
   ],
   parserOptions: {

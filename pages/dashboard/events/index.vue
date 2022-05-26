@@ -1,22 +1,29 @@
 <script lang="ts" setup>
+import type { Ref } from 'vue';
+import { WorkEvent } from '~~/types/event';
 
 definePageMeta({
-  middleware: ['auth']
+  middleware: ['auth'],
+  title: 'Events'
 });
+
 const supabase = useSupabaseClient();
 
 const profile = await useUserProfile();
 
-const { data: events, error } = await supabase
-  .from('events')
-  .select('*')
-  .eq('company', profile.value.company);
+const { data: events }: { data: Ref<WorkEvent[]> } = await useAsyncData('events', async () => {
+  const { data } = await supabase
+    .from('events')
+    .select('*')
+    .eq('company', profile.value.company);
+  return data;
+});
 
 </script>
 
 <template>
   <NuxtLayout name="dashboard">
-    <div v-if="!error" class="flex-col flex gap-5">
+    <div class="flex-col flex gap-5">
       <EventCard
         v-for="event in events"
         :key="event.id"
