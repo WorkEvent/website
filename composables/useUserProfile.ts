@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { Profile } from './../types/profile';
+import type { Profile } from '~/types/profile';
 
 export const useUserProfile = async () => {
   const supabase = useSupabaseClient();
