@@ -45,7 +45,7 @@ const actions = [
       >
         <div class="indicator">
           <span
-            v-if="'indicator' in link && link.indicator !== undefined"
+            v-if="link.indicator !== undefined"
             class="indicator-item badge badge-accent"
           >
             {{ link.indicator }}
@@ -69,7 +69,7 @@ const actions = [
       >
         <div class="indicator">
           <span
-            v-if="'indicator' in action && action.indicator !== undefined"
+            v-if="action.indicator !== undefined"
             class="indicator-item indicator-center indicator-bottom badge badge-accent"
           >
             {{ action.indicator }}
@@ -114,7 +114,7 @@ const actions = [
             <component :is="action.icon" :size="20" />
             {{ action.name }}
             <span
-              v-if="'indicator' in action && action.indicator !== undefined"
+              v-if="action.indicator !== undefined"
               class="badge badge-accent"
             >
               {{ action.indicator }}

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 definePageMeta({
-  middleware: ['auth']
+  middleware: ['auth'],
+  pageTransition: { name: 'fade' }
 });
 
 const { signOut } = useAuth();

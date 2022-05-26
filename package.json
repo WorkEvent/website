@@ -7,23 +7,22 @@
     "lint": "eslint . --fix"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "^9.0.0",
-    "@nuxtjs/supabase": "^0.1.10",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@nuxtjs/supabase": "^0.1.14",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "autoprefixer": "^10.4.4",
     "cross-env": "^7.0.3",
     "daisyui": "^2.13.6",
     "eslint": "^8.14.0",
-    "eslint-plugin-vue": "^8.7.1",
-    "nuxt": "^3.0.0-rc.1",
+    "eslint-plugin-vue": "^9.0.1",
+    "nuxt": "^3.0.0-rc.3",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23",
     "vite-plugin-eslint": "^1.5.2"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.1.8",
-    "phosphor-vue": "^4.4.0",
-    "pinia": "^2.0.13"
+    "phosphor-vue": "^4.4.0"
   }
 }
