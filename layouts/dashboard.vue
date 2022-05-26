@@ -5,9 +5,6 @@ definePageMeta({
 
 const { signOut } = useAuth();
 
-const logout = async () => {
-  await signOut('login');
-};
 </script>
 
 <template>
@@ -16,7 +13,7 @@ const logout = async () => {
       <slot />
     </main>
     <AppFooter />
-    <AppNavigation @logout="logout" />
+    <AppNavigation @sign-out="async () => await signOut('login')" />
   </div>
 </template>
 
