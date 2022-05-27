@@ -3,4 +3,5 @@ export interface WorkEvent {
   name: string;
   description: string;
   company: number;
+  thumbnail: string;
 }

@@ -7,7 +7,7 @@ const props = defineProps<{
   event: WorkEvent;
 }>();
 
-const { data: count } = await useAsyncData('votes-count', async () => {
+const { data: count } = await useAsyncData(`votes-count-${props.event.id}`, async () => {
   const { count } = await supabase
     .from('user-votes')
     .select('*', { count: 'exact' })
@@ -15,24 +15,17 @@ const { data: count } = await useAsyncData('votes-count', async () => {
   return count;
 });
 
-supabase
-  .from('user-votes')
-  .on('*', () => {
-    refreshNuxtData('votes-count');
-  })
-  .subscribe();
-
 </script>
 
 <template>
   <NuxtLink
     :to="`/dashboard/events/${props.event.id}`"
-    class="relative overflow-hidden h-80 w-60 bg-primary p-2 rounded-3xl flex flex-col justify-end"
+    :class="$style['event-card']"
   >
     <img
-      src="https://picsum.photos/240/320"
+      :src="props.event.thumbnail ?? 'https://picsum.photos/240/320'"
       :alt="`${props.event.name} thumbnail`"
-      class="absolute top-0 left-0 h-full w-full"
+      class="absolute top-0 left-0 h-full w-full object-cover"
     >
     <div class="card card-compact w-full bg-base-100">
       <div class="card-body">
@@ -52,4 +45,23 @@ supabase
   </NuxtLink>
 </template>
 
-<style scoped></style>
+<style module>
+
+.event-card {
+  @apply
+    relative
+    overflow-hidden
+    h-80 w-full
+    bg-primary
+    p-2
+    rounded-3xl
+    flex flex-col justify-end
+    hover:scale-105
+    will-change-transform transition-transform;
+
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+</style>
