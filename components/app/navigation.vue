@@ -128,10 +128,13 @@ const actions = [
 
 <style module>
 .navigation {
+  top: 100vh;
+
   @apply
-    sticky bottom-0 left-0
+    sticky left-0
     flex flex-row w-full p-4 items-center
     bg-base-100 border-t border-base-300
+    md:top-0
     md:fixed
     md:flex-col md:w-auto md:h-full md:justify-start md:items-center
     md:border-t-0 md:border-r;

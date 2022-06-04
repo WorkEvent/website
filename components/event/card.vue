@@ -15,6 +15,18 @@ const { data: count } = await useAsyncData(`votes-count-${props.event.id}`, asyn
   return count;
 });
 
+let subscription;
+
+onMounted(() => {
+  subscription = supabase.from('user-votes').on('*', () => {
+    refreshNuxtData(`votes-count-${props.event.id}`);
+  }).subscribe();
+});
+
+onUnmounted(() => {
+  supabase.removeSubscription(subscription);
+});
+
 </script>
 
 <template>
