@@ -7,12 +7,10 @@ module.exports = {
     // "./nuxt.config.{js,ts}",
   ],
   plugins: [
-    require('daisyui'),
-    require('@tailwindcss/line-clamp')
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+    require('daisyui')
   ],
-  theme: {
-    extend: {}
-  },
   daisyui: {
     // themes: [
     //   {

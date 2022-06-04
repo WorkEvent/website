@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="bg-base-200 sticky top-full">
+  <div class="bg-base-200" :class="$style.footer">
     <footer class="footer items-center text-base-content mx-auto max-w-6xl p-4">
       <div class="items-center grid-flow-col">
         <svg
@@ -25,4 +25,11 @@
   </div>
 </template>
 
-<style scoped></style>
+<style module>
+
+.footer {
+  position: sticky;
+  top: 100vh;
+}
+
+</style>
