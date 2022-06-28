@@ -31,7 +31,7 @@ onUnmounted(() => {
 
 <template>
   <NuxtLink
-    :to="`/dashboard/events/${props.event.id}`"
+    :to="`/dashboard/events/view/${props.event.id}`"
     :class="$style['event-card']"
   >
     <img

@@ -15,5 +15,3 @@ const profile = await useUserProfile();
     </div>
   </NuxtLayout>
 </template>
-
-<style scoped></style>

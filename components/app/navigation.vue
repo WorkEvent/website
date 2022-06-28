@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PhSignOut, PhCalendarBlank, PhUser, PhGift, PhDotsThree } from 'phosphor-vue';
+import { PhSignOut, PhCalendarBlank, PhUser, PhGift, PhDotsThree, PhPlus } from 'phosphor-vue';
 
 const emits = defineEmits(['signOut']);
 const route = useRoute();
@@ -7,6 +7,7 @@ const route = useRoute();
 const profile = await useUserProfile();
 
 const links = [
+  { icon: PhPlus, name: 'Propose an event', route: '/dashboard/events/create' },
   { icon: PhCalendarBlank, name: 'Events', route: '/dashboard/events', indicator: undefined },
   { icon: PhGift, name: 'Rewards', route: '/dashboard' }
 ];

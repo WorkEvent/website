@@ -49,5 +49,3 @@ const formatedDate = `${mo} ${da}, ${ho}:${mi}`;
     </section>
   </NuxtLayout>
 </template>
-
-<style scoped></style>
