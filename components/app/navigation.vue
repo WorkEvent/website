@@ -8,7 +8,7 @@ const profile = await useUserProfile();
 
 const links = [
   { icon: PhCalendarBlank, name: 'Events', route: '/dashboard/events', indicator: undefined },
-  { icon: PhGift, name: 'Rewards', route: '/dashboard' }
+  { icon: PhGift, name: 'Rewards', route: '/dashboard/rewards' }
 ];
 
 const actions = [
