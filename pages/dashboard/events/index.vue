@@ -10,10 +10,20 @@ definePageMeta({
 const supabase = useSupabaseClient();
 const profile = await useUserProfile();
 
-const { data: events }: { data: Ref<WorkEvent[]> } = await useAsyncData('events', async () => {
+const { data: votedEvents }: { data: Ref<WorkEvent[]> } = await useAsyncData('voted-events', async () => {
   const { data } = await supabase
     .from('events')
     .select('*')
+    .eq('status', 'voted')
+    .eq('company', profile.value.company);
+  return data;
+});
+
+const { data: toVoteEvents }: { data: Ref<WorkEvent[]> } = await useAsyncData('to-vote-events', async () => {
+  const { data } = await supabase
+    .from('events')
+    .select('*')
+    .eq('status', 'to-vote')
     .eq('company', profile.value.company);
   return data;
 });
@@ -41,9 +51,22 @@ const formatedDate = `${mo} ${da}, ${ho}:${mi}`;
       </h2>
       <div class="grid gap-5 grid-cols-1 xl:grid-cols-3 grid-rows-1">
         <EventCard
-          v-for="event in events"
+          v-for="event in votedEvents"
           :key="event.id"
           :event="event"
+        />
+      </div>
+    </section>
+    <section class="mt-5">
+      <h2 class="font-bold text-2xl mb-4">
+        To be voted
+      </h2>
+      <div class="grid gap-5 grid-cols-1 xl:grid-cols-3 grid-rows-1">
+        <EventCard
+          v-for="event in toVoteEvents"
+          :key="event.id"
+          :event="event"
+          :display-votes="true"
         />
       </div>
     </section>

@@ -4,4 +4,6 @@ export interface WorkEvent {
   description: string;
   company: number;
   thumbnail: string;
+  location: string;
+  status: 'pending' | 'to-vote' | 'voted';
 }

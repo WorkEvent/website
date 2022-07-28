@@ -5,6 +5,7 @@ const supabase = useSupabaseClient();
 
 const props = defineProps<{
   event: WorkEvent;
+  displayVotes?: boolean;
 }>();
 
 const { data: count } = await useAsyncData(`votes-count-${props.event.id}`, async () => {
@@ -48,7 +49,7 @@ onUnmounted(() => {
           {{ props.event.description }}
         </p>
         <div class="card-actions">
-          <div class="badge">
+          <div v-if="props.displayVotes" class="badge">
             {{ count }} votes
           </div>
         </div>

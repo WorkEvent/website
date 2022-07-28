@@ -79,13 +79,16 @@ onUnmounted(() => {
         class="h-60 w-full object-cover"
       >
       <div class="card-body bg-base-300">
+        <p class="text-sm font-bold text-primary">
+          {{ event.location }}
+        </p>
         <h2 class="card-title">
           {{ event.name }}
         </h2>
         <p>
           {{ event.description }}
         </p>
-        <div class="card-actions items-center justify-end">
+        <div v-if="event.status === 'to-vote'" class="card-actions items-center justify-end">
           <div class="badge">
             {{ count }} votes
           </div>
