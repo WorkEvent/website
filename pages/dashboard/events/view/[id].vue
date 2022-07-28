@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { Ref } from 'vue';
+import type { RealtimeSubscription } from '@supabase/supabase-js';
 import { WorkEvent } from '~~/types/event';
 
 definePageMeta({
@@ -19,7 +20,7 @@ const { data: event }: { data: Ref<WorkEvent> } = await useAsyncData(`event-${ro
   return data;
 });
 
-const { data: userVote } = await useAsyncData(`user-vote-${route.params.id}`, async () => {
+const { data: userVote, refresh: refreshUserVote } = await useAsyncData(`user-vote-${route.params.id}`, async () => {
   const { data } = await supabase
     .from('user-votes')
     .select('*')
@@ -29,7 +30,7 @@ const { data: userVote } = await useAsyncData(`user-vote-${route.params.id}`, as
   return data;
 });
 
-const { data: count } = await useAsyncData(`votes-count-${route.params.id}`, async () => {
+const { data: count, refresh: refreshVoteCount } = await useAsyncData(`votes-count-${route.params.id}`, async () => {
   const { count } = await supabase
     .from('user-votes')
     .select('*', { count: 'exact' })
@@ -53,15 +54,14 @@ const toggleVote = async () => {
   }
 };
 
-let subscription;
+let subscription: RealtimeSubscription;
 
 onMounted(() => {
   subscription = supabase.from('user-votes').on('*', () => {
-    refreshNuxtData(`votes-count-${route.params.id}`);
-    refreshNuxtData(`user-vote-${route.params.id}`);
+    refreshVoteCount();
+    refreshUserVote();
+    console.log(userVote.value);
   }).subscribe();
-
-  console.log(userVote);
 });
 
 onUnmounted(() => {

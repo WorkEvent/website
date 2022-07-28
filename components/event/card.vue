@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { RealtimeSubscription } from '@supabase/supabase-js';
 import type { WorkEvent } from '~/types/event';
 
 const supabase = useSupabaseClient();
@@ -7,7 +8,7 @@ const props = defineProps<{
   event: WorkEvent;
 }>();
 
-const { data: count } = await useAsyncData(`votes-count-${props.event.id}`, async () => {
+const { data: count, refresh: refreshVotesCount } = await useAsyncData(`votes-count-${props.event.id}`, async () => {
   const { count } = await supabase
     .from('user-votes')
     .select('*', { count: 'exact' })
@@ -15,11 +16,11 @@ const { data: count } = await useAsyncData(`votes-count-${props.event.id}`, asyn
   return count;
 });
 
-let subscription;
+let subscription: RealtimeSubscription;
 
 onMounted(() => {
   subscription = supabase.from('user-votes').on('*', () => {
-    refreshNuxtData(`votes-count-${props.event.id}`);
+    refreshVotesCount();
   }).subscribe();
 });
 

@@ -68,6 +68,7 @@ const createEvent = () => {
 <style module>
 .file-input::file-selector-button{
   border: none;
+  margin-right: 10px;
   @apply btn;
 }
 </style>
