@@ -6,7 +6,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:vue/essential',
+    'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     '@nuxtjs/eslint-config-typescript'
   ],
@@ -26,6 +26,7 @@ module.exports = {
       'error',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: false }
     ],
-    'no-console': 'off'
+    'no-console': 'off',
+    'vue/multi-word-component-names': 'off'
   }
 };

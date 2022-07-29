@@ -5,18 +5,18 @@ definePageMeta({
   middleware: 'guest'
 });
 
-const { signIn, signUp } = useAuth();
+const { signIn } = useAuth();
 
 const email = ref('');
 const password = ref('');
 
 const login = () => {
-  signIn(email.value, password.value, '/');
+  signIn(email.value, password.value, 'dashboard');
 };
 
-const register = () => {
-  signUp(email.value, password.value, '/');
-};
+// const register = () => {
+//   signUp(email.value, password.value, 'dashboard');
+// };
 </script>
 
 <template>
@@ -42,9 +42,9 @@ const register = () => {
         <NuxtLink class="btn btn-primary w-full normal-case mt-4" @click="login">
           Sign in
         </NuxtLink>
-        <NuxtLink class="btn btn-primary w-full normal-case mt-4" @click="register">
+        <!-- <NuxtLink class="btn btn-primary w-full normal-case mt-4" @click="register">
           Sign up
-        </NuxtLink>
+        </NuxtLink> -->
       </div>
       <div class="mx-auto w-full max-w-xs divider">
         OR

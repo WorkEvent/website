@@ -4,7 +4,6 @@ import esLintPlugin from 'vite-plugin-eslint';
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase'],
-  buildModules: ['@pinia/nuxt'],
   vite: {
     plugins: [esLintPlugin()]
   },

@@ -4,17 +4,12 @@ definePageMeta({
 });
 
 const user = useSupabaseUser();
-const { signOut } = useAuth();
-const profile = useUserProfile();
+const profile = await useUserProfile();
 
-const logout = async () => {
-  await signOut('login');
-};
 </script>
 
 <template>
-  <NuxtLayout>
-    <AppNavigation @logout="logout" />
+  <NuxtLayout name="dashboard">
     <div class="flex flex-col mt-10">
       <p>Your are connected as {{ profile?.first_name }} {{ profile?.last_name }} ({{ user?.email }})</p>
     </div>
