@@ -90,7 +90,7 @@ onUnmounted(() => {
         </p>
         <div v-if="event.status === 'to-vote'" class="card-actions items-center justify-end">
           <div class="badge">
-            {{ count }} votes
+            {{ count }}/{{ event.needed_votes }} votes
           </div>
           <button class="btn btn-primary" @click="toggleVote">
             {{ userVote ? 'Remove vote' : 'Vote for this event' }}

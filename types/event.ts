@@ -6,4 +6,5 @@ export interface WorkEvent {
   thumbnail: string;
   location: string;
   status: 'pending' | 'to-vote' | 'voted';
+  needed_votes: number;
 }
