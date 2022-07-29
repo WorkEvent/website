@@ -1,12 +1,21 @@
 {
-  "private": true,
   "scripts": {
+    "layer0:dev": "layer0 dev",
+    "layer0:build": "layer0 build",
+    "layer0:deploy": "layer0 deploy",
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
     "lint": "eslint . --fix"
   },
+  "private": true,
   "devDependencies": {
+    "@layer0/cli": "^4.17.0",
+    "@layer0/core": "^4.17.0",
+    "@layer0/devtools": "^4.17.0",
+    "@layer0/nuxt-nitro": "^4.17.0",
+    "@layer0/prefetch": "^4.17.0",
+    "@layer0/vue": "^4.17.0",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@nuxtjs/supabase": "^0.1.14",
     "@tailwindcss/line-clamp": "^0.4.0",
